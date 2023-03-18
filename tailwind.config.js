@@ -6,6 +6,8 @@ module.exports = {
   theme: {
     colors: {
       'logoColor': '#17cf97',
+      'white' : '#ffffff',
+      'gray': '#152a21'
     },
   },
   plugins: [],

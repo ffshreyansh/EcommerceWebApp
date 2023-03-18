@@ -1,32 +1,34 @@
 import React from 'react'
 
-function Products() {
+
+function Products(props) {
     return (
-        <div class="grid grid-cols-4 gap-4 p-10">
-            <div className='rounded-md'>
-                <div className='object-contain w-100% h-content'>
-                    <a href="#">
-                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-                            className='object-cover rounded-md w-full h-96' alt="product-img" />
-                    </a>
+        <div className="">
+            <a href={`/products/${props.name.toLowerCase().replace(' ', '-')}`}>
+            <div key={props.id} className="rounded-md">
+                <div className="object-contain w-100% h-content">
+                    
+                        <img src={props.image} className="object-cover rounded-md w-full h-96" alt="product-img" />
+                    
                     <div>
-                        <div className='flex justify-between font-semibold mt-2'>
-                            <p className='text-2xl'>Product Name</p>
-                            <p>$499</p>
+                        <div className="flex justify-between font-semibold mt-2">
+                            <p className="text-2xl">{props.name}</p>
+                            <p>{props.price}</p>
                         </div>
-                        <p className='mt-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
-                        <div className='mt-2 flex items-center'>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <p className='ml-2'>(34)</p>
+                        <p className="mt-2">{props.description}</p>
+                        <div className="mt-2 flex items-center">
+                            {[...Array(props.rating)].map((star, index) => (
+                                <i key={index} className="fa-solid fa-star"></i>
+                            ))}
+                            {[...Array(5 - props.rating)].map((star, index) => (
+                                <i key={index} className="fa-regular fa-star"></i>
+                            ))}
+                            <p className="ml-2">({props.reviews})</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            </a>
         </div>
     )
 }
